@@ -1,0 +1,42 @@
+.details {
+  width: auto;
+
+  border-radius: 0.25rem;
+  padding: 1rem 2rem;
+
+  line-height: 2.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.details summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  text-transform: uppercase;
+  font-weight: bold;
+  line-height: 1.1;
+  font-size: 2rem;
+}
+
+.details summary::after {
+  content: '';
+  top: 0.6rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABOElEQVR4nO2PIUgEURRFryIoKgaDiAgGQRCDYBJMhm0mk81m0iYYtxosC5Z1w8y9f5mwwW6QCbZNggiCZRUURBDFIIq6MuN39yM4rLMT58CD+fPePf99ICene6QrSE2QT5AKGfgK1hU5G4DnLYF8tD9eQa6mlpMrkF6s6xm+v/zdMGYB5L1tvINcT7H5GqQ363iAMYu/b58FeWMHPkFu/UO+AenDZu8gzf/1xBlI161LpO0O5Jt2NsrcwvfnkgPV6hTIyzigOLSbIN9x5hrw/Wl0hOeNgzxzwvtoNnta/ehb2nP6FzBmsjN5e7sxkKctiSSEYR+KxV5IB478HEEwgVRUKqMg644siKt9rsczXSENgTx2XvJTJzBmBJlQLg9COnI2D1GrDSNTSqV+SIdxed5AtvKcHCTwBSY41I7rwiqPAAAAAElFTkSuQmCC');
+  width: 1.6rem;
+  height: 1.6rem;
+  background-size: 1.6rem;
+  background-repeat: no-repeat;
+}
+
+.details[open] summary::after {
+  content: '';
+  transform: rotate(180deg);
+}
+
+.details[open] summary {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #00a2a2;
+}
