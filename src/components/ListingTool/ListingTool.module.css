@@ -1,0 +1,44 @@
+.listing {
+  width: 100%;
+  min-height: 6rem;
+  background-color: white;
+
+  box-shadow: 2px 2px 3px rgb(0, 0, 0, 0.1), -2px 2px 3px rgb(0, 0, 0, 0.15);
+  border-radius: 0.8rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 950px) {
+  .button {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+
+    background-color: #00a2a2;
+    border: none;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+  }
+}
