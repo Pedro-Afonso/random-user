@@ -22,13 +22,7 @@ export default function Home() {
       <Header />
       <BasicLayout
         filterList={<FilterList />}
-        listingTool={
-          <ListingTool
-            select={
-              <Select options={sort} onChange={test => console.log(test)} />
-            }
-          />
-        }
+        listingTool={<ListingTool select={<Select options={sort} />} />}
       >
         <div className={styles.grid}>
           {randomUsersData.isLoading && (

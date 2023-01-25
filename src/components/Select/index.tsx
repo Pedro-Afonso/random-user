@@ -4,10 +4,9 @@ import styles from './Select.module.css'
 
 interface ISelectProps {
   options?: { name: string; value: string }[]
-  onChange: (value: string) => void
 }
 
-export const Select: React.FC<ISelectProps> = ({ options, onChange }) => {
+export const Select: React.FC<ISelectProps> = ({ options }) => {
   const { setSortParam, getParamValue } = useRouterParams()
 
   const sortParam = getParamValue('sort')
