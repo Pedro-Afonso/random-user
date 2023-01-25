@@ -1,0 +1,48 @@
+.card {
+  height: 31rem;
+  width: 100%;
+  color: #222d39;
+  text-align: center;
+  border: 0.1rem solid #e5e5e5;
+  border-radius: 0.4rem;
+  background-color: white;
+}
+
+.card section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 4rem 1.6rem;
+}
+
+.card img {
+  border-radius: 50%;
+  width: 8rem;
+  margin: 0.4rem 0.8rem 1.2rem;
+}
+
+.card h3 {
+  font-size: 2rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 2.6rem;
+  font-weight: 700;
+}
+
+.card span {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card p:first-child {
+  font-size: 14px;
+  margin-bottom: 12px;
+  line-height: 24px;
+}
+
+.card p:not(:first-child) {
+  font-size: 12px;
+  line-height: 16px;
+}
