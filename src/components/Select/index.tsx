@@ -8,7 +8,9 @@ interface ISelectProps {
 }
 
 export const Select: React.FC<ISelectProps> = ({ options, onChange }) => {
-  const { setSortParam } = useRouterParams()
+  const { setSortParam, getParamValue } = useRouterParams()
+
+  const sortParam = getParamValue('sort')
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortParam('sort', e.target.value)
@@ -20,7 +22,11 @@ export const Select: React.FC<ISelectProps> = ({ options, onChange }) => {
         <select onChange={handleSelect}>
           <option value=""></option>
           {options?.map(opt => (
-            <option key={opt.value} value={opt.value}>
+            <option
+              key={opt.value}
+              selected={sortParam === opt.value}
+              value={opt.value}
+            >
               {opt.name}
             </option>
           ))}
