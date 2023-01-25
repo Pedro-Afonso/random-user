@@ -17,7 +17,7 @@ export const Card: React.FC<ICardProps> = ({ randomUser }) => {
     <article className={styles.card}>
       <section>
         <Image src={medium} alt={first} width={80} height={80} priority />
-        <h3>{first + last}</h3>
+        <h3>{first + ' ' + last}</h3>
         <span>Idade: {dob.age}</span>
         <address>
           <p>{street.name + street.number}</p>
