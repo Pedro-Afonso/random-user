@@ -7,7 +7,7 @@ export const Header = () => {
     <header className={styles['header']}>
       <nav className="centralize">
         <a
-          href="https://github.com/Pedro-Afonso?tab=repositories"
+          href="https://github.com/Pedro-Afonso/random-user"
           rel="noreferrer"
           target="_blank"
         >
