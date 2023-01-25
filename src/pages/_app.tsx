@@ -1,6 +1,17 @@
-import '@/styles/globals.css'
+import { QueryClientProvider } from 'react-query'
 import type { AppProps } from 'next/app'
 
+import { AppFilterProvider } from '@/contexts/FilterContext'
+import { queryClient } from '@/services'
+
+import '@/styles/globals.css'
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <AppFilterProvider>
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </AppFilterProvider>
+  )
 }
