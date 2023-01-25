@@ -6,6 +6,8 @@ import { useFilterContext } from '@/contexts/FilterContext'
 import classNames from 'classnames'
 
 interface IBasicLayoutProps {
+  title?: string
+  subtitle?: string
   hasFilterList?: boolean
 
   listingTool: ReactNode
@@ -14,6 +16,8 @@ interface IBasicLayoutProps {
 }
 
 export const BasicLayout: React.FC<IBasicLayoutProps> = ({
+  title,
+  subtitle,
   hasFilterList = true,
 
   listingTool,
@@ -36,7 +40,8 @@ export const BasicLayout: React.FC<IBasicLayoutProps> = ({
       </Head>
       <div className={styles.wrapper + ' centralize'}>
         <div className={styles.title}>
-          <h2>Usuários aleatórios</h2>
+          <h2>{title}</h2>
+          <h3>{subtitle}</h3>
         </div>
         <div className={styles.container}>
           {hasFilterList && filterList && (
