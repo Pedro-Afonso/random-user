@@ -108,9 +108,9 @@ async function fetchRandomUserData() {
 }
 
 function getParams(req: NextApiRequest) {
-  const search = paramToString(req, 'search')
-  const page = paramToString(req, 'page')
-  const limit = paramToString(req, 'limit')
+  const search = paramToString(req, 'search') || ''
+  const page = paramToString(req, 'page') || '1'
+  const limit = paramToString(req, 'limit') || '9'
   const sort = paramToString(req, 'sort')
 
   const state = paramToArray(req, 'Estado')
@@ -122,7 +122,7 @@ function getParams(req: NextApiRequest) {
 function paramToString(req: NextApiRequest, value: string): string | undefined {
   const query = req.query[value]
   const newQuery = Array.isArray(query) ? query[0] : query
-  return newQuery || ''
+  return newQuery
 }
 
 function paramToArray(req: NextApiRequest, value: string): string[] {
