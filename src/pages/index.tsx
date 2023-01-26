@@ -8,6 +8,7 @@ import { SortSelect } from '@/components/SortSelect'
 import { Card, Footer, Header } from '@/components'
 
 import styles from '../styles/Home.module.css'
+import { PageLimitSelect } from '@/components/Select/PageLimitSelect'
 
 export default function Home() {
   const { randomUsersData } = useRandomUsers()
@@ -38,7 +39,12 @@ export default function Home() {
         title="Usuários aleatórios"
         subtitle={subtitle}
         filterList={<FilterList />}
-        listingTool={<ListingTool select={<SortSelect options={sort} />} />}
+        listingTool={
+          <ListingTool
+            select={<SortSelect options={sort} />}
+            select2={<PageLimitSelect />}
+          />
+        }
       >
         <div className={styles.grid}>
           {randomUsersData.isLoading && (
