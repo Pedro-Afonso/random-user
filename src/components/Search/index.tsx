@@ -13,7 +13,7 @@ export const Search = () => {
     if (search) {
       clearAndSetParam('search', search)
     } else {
-      clearParams('search', 'Estado', 'Gênero')
+      clearParams('search', 'Estado', 'Gênero', 'page')
     }
   }
 
