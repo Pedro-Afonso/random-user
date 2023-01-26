@@ -1,12 +1,11 @@
 import { useRouterParams } from '@/hooks'
-import { useState } from 'react'
-import styles from './Select.module.css'
+import styles from './SortSelect.module.css'
 
 interface ISelectProps {
   options?: { name: string; value: string }[]
 }
 
-export const Select: React.FC<ISelectProps> = ({ options }) => {
+export const SortSelect: React.FC<ISelectProps> = ({ options }) => {
   const { setSortParam, getParamValue } = useRouterParams()
 
   const sortParam = getParamValue('sort')

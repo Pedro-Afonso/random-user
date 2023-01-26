@@ -4,7 +4,7 @@ import { FilterList } from '@/components/FilterList'
 import { Pagination } from '@/components/Pagination'
 import { ListingTool } from '@/components/ListingTool'
 import { BasicLayout } from '@/layouts'
-import { Select } from '@/components/Select'
+import { SortSelect } from '@/components/SortSelect'
 import { Card, Footer, Header } from '@/components'
 
 import styles from '../styles/Home.module.css'
@@ -38,7 +38,7 @@ export default function Home() {
         title="Usuários aleatórios"
         subtitle={subtitle}
         filterList={<FilterList />}
-        listingTool={<ListingTool select={<Select options={sort} />} />}
+        listingTool={<ListingTool select={<SortSelect options={sort} />} />}
       >
         <div className={styles.grid}>
           {randomUsersData.isLoading && (
