@@ -98,7 +98,7 @@ export default async function handler(
 }
 
 async function fetchRandomUserData() {
-  const urlRandomUser = 'https://randomuser.me/api/?seed=11&nat=br&results=315'
+  const urlRandomUser = 'https://randomuser.me/api/?seed=11&nat=br&results=615'
   const response = await axios
     .get<IRandomUserResponse>(urlRandomUser, {
       headers: { 'Accept-Encoding': 'gzip' }
