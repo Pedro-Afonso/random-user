@@ -232,11 +232,12 @@ const useRouterParams = (options?: UseRouterParamsOptions) => {
       removeParam(name)
       return
     }
-    const { [name]: param, ...rest } = query
+    const { [name]: param, limit, ...rest } = query
     reload(
       {
         pathname,
         query: {
+          limit,
           [name]: Array.isArray(value)
             ? value.map(el => encodeURIComponent(el))
             : encodeURIComponent(value)
