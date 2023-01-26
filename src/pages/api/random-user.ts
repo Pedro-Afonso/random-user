@@ -40,11 +40,14 @@ export default async function handler(
 
   const filter = [stateList, genderList]
 
-  if (state.length > 0 || gender.length > 0) {
-    randomUserData = randomUserData.filter(
-      user =>
-        state.includes(user.location.state) || gender.includes(user.gender)
+  if (state.length > 0) {
+    randomUserData = randomUserData.filter(user =>
+      state.includes(user.location.state)
     )
+  }
+
+  if (gender.length > 0) {
+    randomUserData = randomUserData.filter(user => gender.includes(user.gender))
   }
 
   // Total of users
