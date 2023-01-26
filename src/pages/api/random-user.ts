@@ -25,10 +25,7 @@ export default async function handler(
   if (search) {
     randomUserData = randomUserData.filter(
       user =>
-        user.name.first.includes(search) ||
-        user.name.last.includes(search) ||
-        user.email.includes(search) ||
-        user.login.username.includes(search)
+        user.name.first.includes(search) || user.name.last.includes(search)
     )
   }
 
