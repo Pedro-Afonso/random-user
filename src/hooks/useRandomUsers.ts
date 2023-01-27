@@ -14,7 +14,8 @@ export const useRandomUsers = () => {
         .get('random-user', { params: router.query })
         .then(res => res.data),
     {
-      staleTime: 120000
+      staleTime: Infinity,
+      cacheTime: Infinity
     }
   )
 
