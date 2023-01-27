@@ -7,7 +7,7 @@ interface UseRouterParamsOptions {
 }
 
 const useRouterParams = (options?: UseRouterParamsOptions) => {
-  const { query, pathname, push, replace } = useRouter()
+  const { query, pathname, push, replace, isReady } = useRouter()
 
   const reload = options?.method === 'replace' ? replace : push
   const shallow = options?.shallow ?? true
@@ -288,7 +288,8 @@ const useRouterParams = (options?: UseRouterParamsOptions) => {
     removeParam,
     toggleParam,
     clearAndSetParam,
-    setSortParam
+    setSortParam,
+    isReady
   }
 }
 export { useRouterParams }
