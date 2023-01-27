@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from './BasicSelect.module.css'
 
 interface IBasicSelectProps {
@@ -11,17 +12,20 @@ export const BasicSelect: React.FC<IBasicSelectProps> = ({
   defaultParam,
   options
 }) => {
+  const [select, setSelect] = useState(defaultParam)
+
+  const handleOnChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    handleSelect(e)
+    setSelect(e.target.value)
+  }
+
   return (
     <>
       <div className={styles['select-wrapper']}>
-        <select onChange={handleSelect}>
+        <select value={select} onChange={handleOnChangeSelect}>
           <option value=""></option>
           {options?.map(opt => (
-            <option
-              key={opt.value}
-              selected={defaultParam === opt.value}
-              value={opt.value}
-            >
+            <option key={opt.value} value={opt.value}>
               {opt.name}
             </option>
           ))}
