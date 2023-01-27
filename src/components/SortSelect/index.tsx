@@ -1,12 +1,12 @@
 import { useRouterParams } from '@/hooks'
-import styles from './SortSelect.module.css'
+import { BasicSelect } from '../Select'
 
 interface ISelectProps {
   options?: { name: string; value: string }[]
 }
 
 export const SortSelect: React.FC<ISelectProps> = ({ options }) => {
-  const { setSortParam, getParamValue } = useRouterParams()
+  const { setSortParam, getParamValue, isReady } = useRouterParams()
 
   const sortParam = getParamValue('sort')
 
@@ -16,21 +16,15 @@ export const SortSelect: React.FC<ISelectProps> = ({ options }) => {
 
   return (
     <>
-      <div className={styles['select-wrapper']}>
-        <select onChange={handleSelect}>
-          <option value=""></option>
-          {options?.map(opt => (
-            <option
-              key={opt.value}
-              selected={sortParam === opt.value}
-              value={opt.value}
-            >
-              {opt.name}
-            </option>
-          ))}
-        </select>
-        <span className={styles['focus']}></span>
-      </div>
+      {isReady ? (
+        <BasicSelect
+          handleSelect={handleSelect}
+          defaultParam={sortParam ?? ''}
+          options={options}
+        />
+      ) : (
+        <></>
+      )}
     </>
   )
 }
