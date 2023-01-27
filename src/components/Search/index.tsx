@@ -1,6 +1,6 @@
+import { useState } from 'react'
+
 import { useRouterParams } from '@/hooks'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
 
 import styles from './Search.module.css'
 

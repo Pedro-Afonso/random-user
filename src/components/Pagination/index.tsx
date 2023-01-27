@@ -1,4 +1,5 @@
 import { useRouterParams } from '@/hooks'
+
 import styles from './Pagination.module.css'
 
 interface IPaginationProps {

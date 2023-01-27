@@ -1,17 +1,22 @@
 import BarLoader from 'react-spinners/BarLoader'
+
+import { SortSelect, PageLimitSelect } from '@/components/Select'
 import { useRandomUsers, useRouterParams } from '@/hooks'
-import { FilterList } from '@/components/FilterList'
-import { Pagination } from '@/components/Pagination'
-import { ListingTool } from '@/components/ListingTool'
 import { BasicLayout } from '@/layouts'
-import { SortSelect } from '@/components/Select/SortSelect'
-import { Card, Footer, Header } from '@/components'
+import {
+  Card,
+  Footer,
+  Header,
+  FilterList,
+  Pagination,
+  ListingTool
+} from '@/components'
 
 import styles from '../styles/Home.module.css'
-import { PageLimitSelect } from '@/components/Select/PageLimitSelect'
 
 export default function Home() {
   const { randomUsersData } = useRandomUsers()
+
   const { getParamValue } = useRouterParams()
 
   const randomUsers = randomUsersData.data?.users ?? []

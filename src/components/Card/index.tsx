@@ -1,5 +1,7 @@
-import { IRandomUser } from '@/interface'
 import Image from 'next/image'
+
+import { IRandomUser } from '@/interface'
+
 import styles from './Card.module.css'
 
 interface ICardProps {

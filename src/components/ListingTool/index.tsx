@@ -1,4 +1,5 @@
 import { useFilterContext } from '@/contexts/FilterContext'
+
 import { Search } from '../Search'
 
 import styles from './ListingTool.module.css'

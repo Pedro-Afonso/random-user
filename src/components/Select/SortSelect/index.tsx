@@ -1,5 +1,6 @@
 import { useRouterParams } from '@/hooks'
-import { BasicSelect } from '..'
+
+import { BasicSelect } from '../BasicSelect'
 
 interface ISelectProps {
   options?: { name: string; value: string }[]

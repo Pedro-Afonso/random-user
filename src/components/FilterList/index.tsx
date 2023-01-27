@@ -1,7 +1,7 @@
-import { useRandomUsers } from '@/hooks'
 import { useEffect, useState } from 'react'
+
+import { useRandomUsers } from '@/hooks'
 import { Details } from '../Details'
-import BarLoader from 'react-spinners/BarLoader'
 
 export const FilterList = () => {
   const [filter, setFilter] = useState<{ name: string; list: string[] }[]>([
