@@ -4,7 +4,7 @@ import { FilterList } from '@/components/FilterList'
 import { Pagination } from '@/components/Pagination'
 import { ListingTool } from '@/components/ListingTool'
 import { BasicLayout } from '@/layouts'
-import { SortSelect } from '@/components/SortSelect'
+import { SortSelect } from '@/components/Select/SortSelect'
 import { Card, Footer, Header } from '@/components'
 
 import styles from '../styles/Home.module.css'
