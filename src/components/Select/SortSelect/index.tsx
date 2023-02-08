@@ -17,15 +17,11 @@ export const SortSelect: React.FC<ISelectProps> = ({ options }) => {
 
   return (
     <>
-      {isReady ? (
-        <BasicSelect
-          handleSelect={handleSelect}
-          defaultParam={sortParam ?? ''}
-          options={options}
-        />
-      ) : (
-        <></>
-      )}
+      <BasicSelect
+        handleSelect={handleSelect}
+        defaultParam={sortParam ?? ''}
+        options={options}
+      />
     </>
   )
 }

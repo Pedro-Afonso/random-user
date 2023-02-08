@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './BasicSelect.module.css'
 
 interface IBasicSelectProps {
@@ -12,7 +12,12 @@ export const BasicSelect: React.FC<IBasicSelectProps> = ({
   defaultParam,
   options
 }) => {
-  const [select, setSelect] = useState(defaultParam)
+  const [select, setSelect] = useState<string | string[] | undefined>(undefined)
+
+  useEffect(() => {
+    setSelect(defaultParam)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleOnChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     handleSelect(e)
