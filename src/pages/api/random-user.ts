@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 
-import { IRandomUser, IRandomUserResponse } from '@/interface'
+import { IRandomUser, IRandomUserResponse } from '@/shared/interface'
 
 export type Data = {
   users: IRandomUser[]

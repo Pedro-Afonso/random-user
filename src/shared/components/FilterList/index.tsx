@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useRandomUsers } from '@/hooks'
+import { useRandomUsers } from '@/shared/hooks'
 import { Details } from '../Details'
 
 export const FilterList = () => {

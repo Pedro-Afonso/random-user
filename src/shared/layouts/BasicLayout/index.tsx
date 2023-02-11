@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import Head from 'next/head'
 
 import styles from './BasicLayout.module.css'
-import { useFilterContext } from '@/contexts/FilterContext'
+import { useFilterContext } from '@/shared/contexts/FilterContext'
 import classNames from 'classnames'
 
 interface IBasicLayoutProps {

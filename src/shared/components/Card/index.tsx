@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { IRandomUser } from '@/interface'
+import { IRandomUser } from '@/shared/interface'
 
 import styles from './Card.module.css'
 

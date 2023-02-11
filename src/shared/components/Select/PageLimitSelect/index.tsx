@@ -1,4 +1,4 @@
-import { useRouterParams } from '@/hooks'
+import { useRouterParams } from '@/shared/hooks'
 
 import { BasicSelect } from '../BasicSelect'
 

@@ -1,8 +1,8 @@
 import BarLoader from 'react-spinners/BarLoader'
 
-import { SortSelect, PageLimitSelect } from '@/components/Select'
-import { useRandomUsers, useRouterParams } from '@/hooks'
-import { BasicLayout } from '@/layouts'
+import { SortSelect, PageLimitSelect } from '@/shared/components/Select'
+import { useRandomUsers, useRouterParams } from '@/shared/hooks'
+import { BasicLayout } from '@/shared/layouts'
 import {
   Card,
   Footer,
@@ -10,7 +10,7 @@ import {
   FilterList,
   Pagination,
   ListingTool
-} from '@/components'
+} from '@/shared/components'
 
 import styles from '../styles/Home.module.css'
 

@@ -1,4 +1,4 @@
-import { useRouterParams } from '@/hooks'
+import { useRouterParams } from '@/shared/hooks'
 
 import styles from './Pagination.module.css'
 

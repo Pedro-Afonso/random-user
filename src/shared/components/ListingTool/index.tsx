@@ -1,4 +1,4 @@
-import { useFilterContext } from '@/contexts/FilterContext'
+import { useFilterContext } from '@/shared/contexts/FilterContext'
 
 import { Search } from '../Search'
 
