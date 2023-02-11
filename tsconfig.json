@@ -16,6 +16,12 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@/components": ["./src/shared/components"],
+      "@/contexts": ["./src/shared/contexts"],
+      "@/hooks": ["./src/shared/hooks"],
+      "@/interfaces": ["./src/shared/interfaces"],
+      "@/layouts": ["./src/shared/layouts"],
+      "@/services": ["./src/shared/services"],
       "@/*": ["./src/*"]
     }
   },
