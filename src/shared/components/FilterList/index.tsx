@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { useRandomUsers } from '@/shared/hooks'
-import { Details } from '../Details'
+import { useRandomUsers } from '@/hooks'
+import { Details } from '@/components'
 
 export const FilterList = () => {
   const [filter, setFilter] = useState<{ name: string; list: string[] }[]>([

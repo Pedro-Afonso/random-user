@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
 import { Data } from '@/pages/api/random-user'
-import { apiClient } from '@/shared/services'
+import { apiClient } from '@/services'
 
 export const useRandomUsers = () => {
   const router = useRouter()

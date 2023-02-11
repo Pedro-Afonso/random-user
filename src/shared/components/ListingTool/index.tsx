@@ -1,6 +1,5 @@
-import { useFilterContext } from '@/shared/contexts/FilterContext'
-
-import { Search } from '../Search'
+import { useFilterContext } from '@/contexts'
+import { Search } from '@/components'
 
 import styles from './ListingTool.module.css'
 

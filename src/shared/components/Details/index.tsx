@@ -1,5 +1,5 @@
-import { useRouterParams } from '@/shared/hooks'
-import { Checkbox } from '../Checkbox'
+import { useRouterParams } from '@/hooks'
+import { Checkbox } from '@/components'
 
 import styles from './Details.module.css'
 
