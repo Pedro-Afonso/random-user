@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 
 import { Data } from '@/pages/api/random-user'
 import { apiClient } from '@/services'
+import { useMemo } from 'react'
 
 export const useRandomUsers = () => {
   const router = useRouter()
@@ -15,7 +16,8 @@ export const useRandomUsers = () => {
         .then(res => res.data),
     {
       staleTime: Infinity,
-      cacheTime: Infinity
+      cacheTime: Infinity,
+      keepPreviousData: true
     }
   )
 
