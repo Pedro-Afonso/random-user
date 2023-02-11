@@ -21,8 +21,10 @@ export const useRandomUsers = () => {
     }
   )
 
+  const filter = randomUsersData.data?.filter ?? []
+
   const page = router.query.page
   const limit = router.query.limit
 
-  return { randomUsersData, page, limit }
+  return { randomUsersData, page, limit, filter }
 }
