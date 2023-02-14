@@ -21,7 +21,7 @@ export const Details: React.FC<IDetailsProps> = ({ name, list }) => {
       {list.map(value => (
         <Checkbox
           key={value}
-          value={value}
+          name={value}
           handleCheckbox={handleCheckbox}
           defaultChecked={hasParam(name, value)}
         />
