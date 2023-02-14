@@ -11,10 +11,11 @@ yarn.lock
 .prettierrc
 coverage
 
+/*.json
+tsconfig.json
 next-env.d.ts
 package-lock.json
 package.json
 README.md
-tsconfig.json
 
 .env
