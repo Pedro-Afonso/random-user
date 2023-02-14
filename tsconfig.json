@@ -16,6 +16,8 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@/providers": ["./src/__test__/providers"],
+      "@/mocks": ["./src/__test__/mocks"],
       "@/components": ["./src/shared/components"],
       "@/contexts": ["./src/shared/contexts"],
       "@/hooks": ["./src/shared/hooks"],
