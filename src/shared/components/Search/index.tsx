@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useRouterParams } from '@/shared/hooks'
+import { useRouterParams } from '@/hooks'
 
 import styles from './Search.module.css'
 

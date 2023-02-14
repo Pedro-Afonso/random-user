@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 
 import { Data } from '@/pages/api/random-user'
 import { apiClient } from '@/services'
-import { useMemo } from 'react'
 
 export const useRandomUsers = () => {
   const router = useRouter()
@@ -22,7 +21,6 @@ export const useRandomUsers = () => {
   )
 
   const filter = randomUsersData.data?.filter ?? []
-
   const page = router.query.page
   const limit = router.query.limit
 
