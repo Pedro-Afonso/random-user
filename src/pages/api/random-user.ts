@@ -21,12 +21,8 @@ export default async function handler(
 
   let randomUserData = await fetchRandomUserData()
 
-  // Search for an user by name, email or nickname
   if (search) {
-    randomUserData = randomUserData.filter(
-      user =>
-        user.name.first.includes(search) || user.name.last.includes(search)
-    )
+    randomUserData = searchByName(search, randomUserData)
   }
 
   const discoveredColors = randomUserData.map(i => i.location.state)
@@ -129,4 +125,10 @@ function paramToArray(req: NextApiRequest, value: string): string[] {
   } else {
     return [decodeURIComponent(query)]
   }
+}
+
+function searchByName(search: string, randomUserData: IRandomUser[]) {
+  return randomUserData.filter(
+    user => user.name.first.includes(search) || user.name.last.includes(search)
+  )
 }
