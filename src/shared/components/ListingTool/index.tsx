@@ -4,30 +4,30 @@ import { Search } from '@/components'
 import styles from './ListingTool.module.css'
 
 interface IListingToolProps {
-  select?: React.ReactNode
-  select2?: React.ReactNode
+  selectPrimary?: React.ReactNode
+  selectSecondary?: React.ReactNode
   hasSearch?: boolean
   hasNewButton?: boolean
 }
 
 export const ListingTool: React.FC<IListingToolProps> = ({
-  select,
-  select2,
+  selectPrimary,
+  selectSecondary,
   hasSearch = true,
   hasNewButton = true
 }) => {
   const { toggleFilter } = useFilterContext()
 
-  const hasSelect = !!select2 || !!select
+  const hasSelect = !!selectSecondary || !!selectPrimary
 
   return (
-    <div className={styles['listing']}>
+    <div data-testid='listing-tool-id' className={styles['listing']}>
       {hasSearch && <Search />}
       <div className={styles['actions']}>
         {hasSelect && (
           <div className={styles['selects']}>
-            {select2}
-            {select}
+            {selectSecondary}
+            {selectPrimary}
           </div>
         )}
         {hasNewButton && (
