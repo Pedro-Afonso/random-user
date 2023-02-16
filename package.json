@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --maxWorkers=50% --passWithNoTests --silent"
+    "test": "jest --maxWorkers=50% --passWithNoTests"
   },
   "dependencies": {
     "@next/font": "13.1.3",
