@@ -46,8 +46,8 @@ export default function Home() {
         filterList={<FilterList />}
         listingTool={
           <ListingTool
-            select={<SortSelect options={sort} />}
-            select2={<PageLimitSelect />}
+            selectPrimary={<SortSelect options={sort} />}
+            selectSecondary={<PageLimitSelect />}
           />
         }
       >

@@ -1,4 +1,4 @@
-import { useRouterParams } from '@/shared/hooks'
+import { useRouterParams } from '@/hooks'
 
 import styles from './Pagination.module.css'
 
@@ -32,40 +32,38 @@ export const Pagination: React.FC<IPaginationProps> = props => {
   }
 
   return (
-    <>
-      {length ? (
-        <div className={styles['pagination']}>
-          <button
-            className={styles['pagination-arrow']}
-            disabled={page === 1}
-            onClick={() => onChangePage(page - 1)}
-          ></button>
+    <div className={styles['pagination']}>
+      <button
+        aria-label="previous page"
+        className={styles['pagination-arrow']}
+        disabled={page === 1}
+        onClick={() => onChangePage(page - 1)}
+      ></button>
 
-          {page > 3 && <span>...</span>}
+      {page > 3 && <span>...</span>}
 
-          {pages.map(
-            (p, key) =>
-              p <= lastPage && (
-                <button
-                  key={key}
-                  onClick={() => onChangePage(p)}
-                  className={styles['pagination-button'] + ' ' + isActive(p)}
-                >
-                  {p}
-                </button>
-              )
-          )}
+      {pages.map(
+        (p, key) =>
+          p <= lastPage && (
+            <button
+              key={key}
+              onClick={() => onChangePage(p)}
+              className={styles['pagination-button'] + ' ' + isActive(p)}
+            >
+              {p}
+            </button>
+          )
+      )}
 
-          {(lastPage > 5 || (page > 3 && page <= lastPage - 3)) &&
-            page < lastPage - 3 && <span>...</span>}
+      {(lastPage > 5 || (page > 3 && page <= lastPage - 3)) &&
+        page < lastPage - 3 && <span>...</span>}
 
-          <button
-            className={styles['pagination-arrow']}
-            disabled={page === lastPage}
-            onClick={() => onChangePage(page + 1)}
-          ></button>
-        </div>
-      ) : null}
-    </>
+      <button
+        aria-label="next page"
+        className={styles['pagination-arrow']}
+        disabled={page === lastPage}
+        onClick={() => onChangePage(page + 1)}
+      ></button>
+    </div>
   )
 }

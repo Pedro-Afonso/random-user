@@ -1,4 +1,4 @@
-import { useRouterParams } from '@/shared/hooks'
+import { useRouterParams } from '@/hooks'
 
 import { BasicSelect } from '../BasicSelect'
 
@@ -7,7 +7,7 @@ interface ISelectProps {
 }
 
 export const SortSelect: React.FC<ISelectProps> = ({ options }) => {
-  const { setSortParam, getParamValue, isReady } = useRouterParams()
+  const { setSortParam, getParamValue } = useRouterParams()
 
   const sortParam = getParamValue('sort')
 
