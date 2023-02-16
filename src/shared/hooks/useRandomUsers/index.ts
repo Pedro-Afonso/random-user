@@ -12,7 +12,8 @@ export const useRandomUsers = () => {
     () =>
       apiClient
         .get('random-user', { params: router.query })
-        .then(res => res.data),
+        .then(res => res.data)
+        .catch(console.log),
     {
       staleTime: Infinity,
       cacheTime: Infinity,
