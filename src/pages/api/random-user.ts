@@ -17,84 +17,64 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const { search, page, limit, state, gender, sort } = getParams(req)
+  try {
+    const { search, page, limit, state, gender, sort } = getParams(req)
 
-  let randomUserData = await fetchRandomUserData()
+    let randomUserData = await fetchRandomUserData()
 
-  if (search) {
-    randomUserData = searchByName(search, randomUserData)
-  }
+    if (search) {
+      randomUserData = searchByName(search, randomUserData)
+    }
 
-  const discoveredColors = randomUserData.map(i => i.location.state)
-  const stateList = { name: 'Estado', list: [...new Set(discoveredColors)] }
+    const filter = extractFilterList(randomUserData)
 
-  const discoveredGender = randomUserData.map(i => i.gender)
-  const genderList = { name: 'Gênero', list: [...new Set(discoveredGender)] }
+    if (state.length > 0) {
+      randomUserData = applyFilterState(state, randomUserData)
+    }
 
-  const filter = [stateList, genderList]
+    if (gender.length > 0) {
+      randomUserData = applyFilterGender(gender, randomUserData)
+    }
 
-  if (state.length > 0) {
-    randomUserData = randomUserData.filter(user =>
-      state.includes(user.location.state)
-    )
-  }
+    const total: number = randomUserData.length
 
-  if (gender.length > 0) {
-    randomUserData = randomUserData.filter(user => gender.includes(user.gender))
-  }
+    if (sort) {
+      randomUserData = applySort(sort, randomUserData)
+    }
 
-  // Total of users
-  const total: number = randomUserData.length
+    // Pagination
+    randomUserData = applyPagination(limit, page, randomUserData)
 
-  if (sort) {
-    randomUserData = randomUserData.sort((a, b) => {
-      const { name: nameA, dob: dobA } = a
-      const { name: nameB, dob: dobB } = b
+    const sortOptions = [
+      { name: 'Nome crescente', value: 'name-asc' },
+      { name: 'Nome decrescente', value: 'name-des' },
+      { name: 'Idade crescente', value: 'age-asc' },
+      { name: 'Idade decrescente', value: 'age-des' }
+    ]
 
-      switch (sort) {
-        case 'age-des':
-          return dobB.age - dobA.age
-        case 'age-asc':
-          return dobA.age - dobB.age
-        case 'name-asc':
-          return nameA.first.localeCompare(nameB.first)
-        case 'name-des':
-          return nameB.first.localeCompare(nameA.first)
-        default:
-          return 1
-      }
+    res.status(200).json({
+      users: randomUserData,
+      filter,
+      total,
+      sort: sortOptions
     })
+  } catch (error) {
+    console.log(error)
   }
-
-  // Pagination
-  if (limit && +limit <= 150 && page) {
-    const startIndex = (parseInt(page) - 1) * parseInt(limit)
-    const endIndex = parseInt(page) * parseInt(limit)
-    randomUserData = randomUserData.slice(startIndex, endIndex)
-  } else {
-    randomUserData = randomUserData.slice(0, 9)
-  }
-
-  const sortOptions = [
-    { name: 'Nome crescente', value: 'name-asc' },
-    { name: 'Nome decrescente', value: 'name-des' },
-    { name: 'Idade crescente', value: 'age-asc' },
-    { name: 'Idade decrescente', value: 'age-des' }
-  ]
-
-  res.status(200).json({
-    users: randomUserData,
-    filter,
-    total,
-    sort: sortOptions
-  })
 }
 
 async function fetchRandomUserData() {
-  const urlRandomUser = 'https://randomuser.me/api/?seed=11&nat=br&results=615'
+  const urlRandomUser = 'https://randomuser.me/api/'
+  const params = {
+    seed: '11',
+    nat: 'br',
+    results: '60',
+    inc: 'gender,name,nat,dob,id,picture,location,login'
+  }
   const response = await axios
     .get<IRandomUserResponse>(urlRandomUser, {
-      headers: { 'Accept-Encoding': 'gzip' }
+      headers: { 'Accept-Encoding': 'gzip' },
+      params
     })
     .then(res => res.data.results)
   return response
@@ -102,8 +82,8 @@ async function fetchRandomUserData() {
 
 function getParams(req: NextApiRequest) {
   const search = paramToString(req, 'search') || ''
-  const page = paramToString(req, 'page') || '1'
-  const limit = paramToString(req, 'limit') || '9'
+  const page = Number(paramToString(req, 'page') || 1)
+  const limit = Number(paramToString(req, 'limit') || 9)
   const sort = paramToString(req, 'sort')
 
   const state = paramToArray(req, 'Estado')
@@ -131,4 +111,58 @@ function searchByName(search: string, randomUserData: IRandomUser[]) {
   return randomUserData.filter(
     user => user.name.first.includes(search) || user.name.last.includes(search)
   )
+}
+
+function extractFilterList(randomUserData: IRandomUser[]) {
+  const discoveredColors = randomUserData.map(i => i.location.state)
+  const stateList = { name: 'Estado', list: [...new Set(discoveredColors)] }
+
+  const discoveredGender = randomUserData.map(i => i.gender)
+  const genderList = { name: 'Gênero', list: [...new Set(discoveredGender)] }
+
+  const filter = [stateList, genderList]
+
+  return filter
+}
+
+function applyFilterState(state: string[], randomUserData: IRandomUser[]) {
+  return randomUserData.filter(user => state.includes(user.location.state))
+}
+
+function applyFilterGender(gender: string[], randomUserData: IRandomUser[]) {
+  return randomUserData.filter(user => gender.includes(user.gender))
+}
+
+function applySort(sort: string, randomUserData: IRandomUser[]) {
+  return randomUserData.sort((a, b) => {
+    const { name: nameA, dob: dobA } = a
+    const { name: nameB, dob: dobB } = b
+
+    switch (sort) {
+      case 'age-des':
+        return dobB.age - dobA.age
+      case 'age-asc':
+        return dobA.age - dobB.age
+      case 'name-asc':
+        return nameA.first.localeCompare(nameB.first)
+      case 'name-des':
+        return nameB.first.localeCompare(nameA.first)
+      default:
+        return 1
+    }
+  })
+}
+
+function applyPagination(
+  limit: number,
+  page: number,
+  randomUserData: IRandomUser[]
+) {
+  if (limit && +limit <= 150 && page) {
+    const startIndex = (page - 1) * limit
+    const endIndex = page * limit
+    return randomUserData.slice(startIndex, endIndex)
+  } else {
+    return randomUserData.slice(0, 9)
+  }
 }
