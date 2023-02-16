@@ -1,5 +1,5 @@
 // jest.config.js
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line
 const nextJest = require('next/jest')
 
 const createJestConfig = nextJest({
@@ -35,10 +35,11 @@ const customJestConfig = {
     // '@/config/(.*)$': '<rootDir>/src/shared/config/$1',
     '@/layouts': '<rootDir>/src/shared/layouts',
     '@/services': '<rootDir>/src/shared/services',
-    '@/hooks': '<rootDir>/src/shared/hooks',
+    '@/hooks': '<rootDir>/src/shared/hooks'
     // '@/utils': '<rootDir>/src/shared/utils',
     // '@/slices/(.*)$': '<rootDir>/src/shared/slices/$1'
   },
+
   testEnvironment: 'jest-environment-jsdom'
 }
 
