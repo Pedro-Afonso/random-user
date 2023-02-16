@@ -17,8 +17,8 @@ describe('Card', () => {
       level: 3,
       name: new RegExp(randomUser.name.last)
     })
-    const street = screen.getByText(new RegExp(randomUser.name.first, 'gi'))
-    const city = screen.getByText(new RegExp(randomUser.location.city, 'gi'))
+    const street = screen.getByText(new RegExp(randomUser.name.first, 'i'))
+    const city = screen.getByText(new RegExp(randomUser.location.city, 'i'))
     const avatar = screen.getByRole('img')
 
     expect(firstName).toBeInTheDocument()

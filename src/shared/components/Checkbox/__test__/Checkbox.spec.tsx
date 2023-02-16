@@ -17,7 +17,7 @@ describe('Checkbox', () => {
     renderWithProviders(<Checkbox {...props} />)
 
     const checkbox = screen.getByRole('checkbox')
-    const checkboxLabel = screen.getByText(new RegExp(props.name, 'gi'))
+    const checkboxLabel = screen.getByText(new RegExp(props.name, 'i'))
 
     expect(checkbox).toBeInTheDocument()
     expect(checkboxLabel).toBeInTheDocument()
