@@ -22,9 +22,22 @@ export const useRandomUsers = () => {
     }
   )
 
+  const users = randomUsersData.data?.users ?? []
   const filter = randomUsersData.data?.filter ?? []
+  const total = randomUsersData.data?.total
+  const sort = randomUsersData.data?.sort
+  const isLoading = randomUsersData.isLoading
   const page = router.query.page
   const limit = router.query.limit
 
-  return { randomUsersData, page, limit, filter }
+  return {
+    randomUsersData,
+    users,
+    page,
+    limit,
+    filter,
+    total,
+    sort,
+    isLoading
+  }
 }
