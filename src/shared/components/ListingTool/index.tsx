@@ -21,17 +21,17 @@ export const ListingTool: React.FC<IListingToolProps> = ({
   const hasSelect = !!selectSecondary || !!selectPrimary
 
   return (
-    <div data-testid='listing-tool-id' className={styles['listing']}>
+    <div data-testid="listing-tool-id" className={styles.listing}>
       {hasSearch && <Search />}
-      <div className={styles['actions']}>
+      <div className={styles.actions}>
         {hasSelect && (
-          <div className={styles['selects']}>
+          <div className={styles.selects}>
             {selectSecondary}
             {selectPrimary}
           </div>
         )}
         {hasNewButton && (
-          <button className={styles['button']} onClick={toggleFilter}>
+          <button className={styles.button} onClick={toggleFilter}>
             <svg
               style={{ color: 'white' }}
               height="32px"

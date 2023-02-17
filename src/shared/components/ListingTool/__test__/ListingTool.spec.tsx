@@ -15,7 +15,7 @@ describe('ListingTool', () => {
     expect(listingToolId).toBeInTheDocument()
   })
 
-  it('should have selectPrimary or selectSecondary ', () => {
+  it('should have selectPrimary or selectSecondary', () => {
     const props = {
       selectPrimary: <p>selectPrimary</p>,
       selectSecondary: <p>selectSecondary</p>

@@ -4,7 +4,7 @@ import styles from './Header.module.css'
 
 export const Header = () => {
   return (
-    <header className={styles['header']}>
+    <header className={styles.header}>
       <nav className="centralize">
         <a
           href="https://github.com/Pedro-Afonso/random-user"

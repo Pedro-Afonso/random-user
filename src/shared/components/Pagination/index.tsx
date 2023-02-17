@@ -32,7 +32,7 @@ export const Pagination: React.FC<IPaginationProps> = props => {
   }
 
   return (
-    <div className={styles['pagination']}>
+    <div className={styles.pagination}>
       <button
         aria-label="previous page"
         className={styles['pagination-arrow']}

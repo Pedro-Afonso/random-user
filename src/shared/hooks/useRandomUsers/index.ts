@@ -13,6 +13,7 @@ export const useRandomUsers = () => {
       apiClient
         .get('random-user', { params: router.query })
         .then(res => res.data)
+        // eslint-disable-next-line no-console
         .catch(console.log),
     {
       staleTime: Infinity,

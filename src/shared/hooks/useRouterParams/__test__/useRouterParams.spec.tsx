@@ -34,9 +34,9 @@ describe('useRouterParams hook', () => {
       const valueB = result.current.getParamValue('B')
       const valueC = result.current.getParamValue('C')
 
-      expect(valueA).toEqual('1')
+      expect(valueA).toBe('1')
       expect(valueB).toEqual(['2', '3'])
-      expect(valueC).toEqual(undefined)
+      expect(valueC).toBeUndefined()
     })
   })
 
@@ -49,7 +49,7 @@ describe('useRouterParams hook', () => {
         result.current.addParam('B', '2')
       })
 
-      expect(mockRouter.asPath).toEqual('?A=1&B=2')
+      expect(mockRouter.asPath).toBe('?A=1&B=2')
     })
 
     it('should add a query param with the same name', () => {
@@ -60,7 +60,7 @@ describe('useRouterParams hook', () => {
         result.current.addParam('B', '3')
       })
 
-      expect(mockRouter.asPath).toEqual('?A=1&B=2&B=3')
+      expect(mockRouter.asPath).toBe('?A=1&B=2&B=3')
     })
 
     it('should add multiples params with the same name', () => {
@@ -71,7 +71,7 @@ describe('useRouterParams hook', () => {
         result.current.addParam('B', '4')
       })
 
-      expect(mockRouter.asPath).toEqual('?A=1&B=2&B=3&B=4')
+      expect(mockRouter.asPath).toBe('?A=1&B=2&B=3&B=4')
     })
   })
 

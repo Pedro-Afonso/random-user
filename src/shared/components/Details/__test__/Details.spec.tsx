@@ -21,7 +21,7 @@ describe('Details', () => {
     expect(checkbox).toHaveLength(props.list.length)
   })
 
-  it('should render Details', () => {
+  it('should update checked attribute to true', () => {
     const props = {
       name: 'test-name',
       list: ['1', '2']

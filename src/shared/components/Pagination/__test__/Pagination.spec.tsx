@@ -16,7 +16,7 @@ describe('Pagination', () => {
     expect(pages).toHaveLength(1)
   })
 
-  it('should render Pagination component with 3 page button ', () => {
+  it('should render Pagination component with 3 page button', () => {
     mockRouter.push('?page=3&limit=9')
     renderWithProviders(<Pagination length={20} />)
 

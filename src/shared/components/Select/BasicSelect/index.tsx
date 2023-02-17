@@ -35,7 +35,7 @@ export const BasicSelect: React.FC<IBasicSelectProps> = ({
             </option>
           ))}
         </select>
-        <span className={styles['focus']}></span>
+        <span className={styles.focus}></span>
       </div>
     </>
   )

@@ -44,7 +44,7 @@ describe('useRandomUsers hook', () => {
     const page = result.current.page
     const limit = result.current.limit
 
-    expect(page).toEqual('1')
-    expect(limit).toEqual('9')
+    expect(page).toBe('1')
+    expect(limit).toBe('9')
   })
 })

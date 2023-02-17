@@ -23,7 +23,7 @@ describe('BasicSelect', () => {
     expect(select).toHaveValue('value-1')
   })
 
-  it('should select the second value ', () => {
+  it('should select the second value', () => {
     const props = {
       handleSelect: jest.fn(),
       defaultParam: 'value-1',

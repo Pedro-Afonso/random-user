@@ -90,6 +90,7 @@ const useRouterParams = (options?: UseRouterParamsOptions) => {
       removeParam(name)
       return
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { [name]: param, ...rest } = query
     reload(
       {
@@ -232,6 +233,7 @@ const useRouterParams = (options?: UseRouterParamsOptions) => {
       removeParam(name)
       return
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { [name]: param, limit, ...rest } = query
     reload(
       {
@@ -262,6 +264,7 @@ const useRouterParams = (options?: UseRouterParamsOptions) => {
       removeParam(name)
       return
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { [name]: param, ...rest } = query
     reload(
       {

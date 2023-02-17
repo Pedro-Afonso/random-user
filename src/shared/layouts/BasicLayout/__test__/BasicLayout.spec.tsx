@@ -1,5 +1,4 @@
-import { fireEvent, screen } from '@testing-library/react'
-import mockRouter from 'next-router-mock'
+import { screen } from '@testing-library/react'
 
 import { renderWithProviders } from '@/providers'
 
