@@ -1,6 +1,6 @@
 import BarLoader from 'react-spinners/BarLoader'
 
-import { useRandomUsers, useRouterParams } from '@/hooks'
+import { useRandomUsers } from '@/hooks'
 import { BasicLayout } from '@/layouts'
 import {
   Card,
@@ -10,40 +10,21 @@ import {
   Pagination,
   ListingTool,
   SortSelect,
-  PageLimitSelect
+  PageLimitSelect,
+  Subtitle
 } from '@/components'
 
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const { randomUsersData } = useRandomUsers()
-
-  const { getParamValue } = useRouterParams()
-
-  const randomUsers = randomUsersData.data?.users ?? []
-
-  const total = randomUsersData.data?.total
-
-  const sort = randomUsersData.data?.sort
-
-  const results = randomUsersData.data?.users.length
-
-  const searchParam = getParamValue('search')
-
-  const messageSearch = searchParam
-    ? `, para o resultado da pesquisa: "${searchParam}"`
-    : ''
-
-  const subtitle = results
-    ? `Exibindo ${results} resultados de ${total}` + messageSearch
-    : ''
+  const { users, total, sort, isLoading } = useRandomUsers()
 
   return (
     <>
       <Header />
       <BasicLayout
         title="Usuários aleatórios"
-        subtitle={subtitle}
+        subtitle={<Subtitle />}
         filterList={<FilterList />}
         listingTool={
           <ListingTool
@@ -53,14 +34,14 @@ export default function Home() {
         }
       >
         <div className={styles.grid}>
-          {randomUsersData.isLoading && (
+          {isLoading && (
             <BarLoader width="100%" cssOverride={{ gridColumn: '1/-1' }} />
           )}
-          {randomUsers.map(randomUser => (
+          {users.map(randomUser => (
             <Card key={randomUser.login.uuid} randomUser={randomUser} />
           ))}
         </div>
-        {!randomUsersData.isLoading && <Pagination length={total} />}
+        {!isLoading && <Pagination length={total} />}
       </BasicLayout>
       <Footer />
     </>
