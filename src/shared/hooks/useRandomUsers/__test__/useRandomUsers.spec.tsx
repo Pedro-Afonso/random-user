@@ -28,9 +28,9 @@ describe('useRandomUsers hook', () => {
   it('should return randomUsersData and filter', async () => {
     const { result } = renderHooksProvider(() => useRandomUsers())
 
-    await waitFor(() => result.current.randomUsersData.data.isSuccess)
+    await waitFor(() => result.current.total.isSuccess)
 
-    const users = result.current.randomUsersData.data.users
+    const users = result.current.users
     const filter = result.current.filter
 
     expect(users).toEqual(randomUserData.users)
