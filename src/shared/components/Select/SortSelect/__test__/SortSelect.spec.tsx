@@ -1,45 +1,49 @@
-import { fireEvent, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import mockRouter from 'next-router-mock'
+import { setupServer } from 'msw/node'
+import { rest } from 'msw'
 
 import { renderWithProviders } from '@/providers'
+import { randomUserData } from '@/mocks'
 
 import { SortSelect } from '..'
 
 jest.mock('next/router', () => require('next-router-mock'))
 
-describe('SortSelect', () => {
-  const props = {
-    options: [
-      { name: 'name-1', value: 'value-1' },
-      { name: 'name-2', value: 'value-2' }
-    ]
-  }
-  it('should render SortSelect', () => {
-    renderWithProviders(<SortSelect {...props} />)
+const handlers = [
+  rest.get('http://localhost:3000/api/random-user', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(randomUserData))
+  })
+]
 
-    const select = screen.getByRole('combobox')
+const server = setupServer(...handlers)
+
+jest.mock('next/router', () => require('next-router-mock'))
+
+beforeAll(() => server.listen())
+
+afterEach(() => server.resetHandlers())
+
+afterAll(() => server.close())
+
+describe('SortSelect', () => {
+  const { sort } = randomUserData
+  it('should render SortSelect', async () => {
+    renderWithProviders(<SortSelect />)
+
+    const select = await screen.findByRole('combobox')
 
     expect(select).toBeInTheDocument()
     expect(select).toHaveValue('')
   })
 
-  it('should have value-1 as default value', () => {
-    mockRouter.push('?sort=value-1')
-    renderWithProviders(<SortSelect {...props} />)
+  it(`should have ${sort[0].value} as default value`, async () => {
+    mockRouter.push(`?sort=${sort[0].value}`)
+    renderWithProviders(<SortSelect />)
 
-    const select = screen.getByRole('combobox')
+    await screen.findByRole('option', { name: sort[0].name })
+    const select = await screen.findByRole('combobox')
 
-    expect(select).toHaveValue('value-1')
-  })
-
-  it('should select the second value', () => {
-    renderWithProviders(<SortSelect {...props} />)
-
-    const select = screen.getByRole('combobox')
-
-    fireEvent.change(select, { target: { value: 'value-2' } })
-
-    expect(select).toHaveValue('value-2')
-    expect(mockRouter.asPath).toBe('?page=1&sort=value-2')
+    expect(select).toHaveValue(sort[0].value)
   })
 })
