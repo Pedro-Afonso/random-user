@@ -9,9 +9,9 @@ import styles from './BasicLayout.module.css'
 
 interface IBasicLayoutProps {
   title?: string
-  subtitle?: string
   hasFilterList?: boolean
 
+  subtitle?: ReactNode
   listingTool: ReactNode
   filterList: ReactNode
   children: ReactNode
@@ -43,7 +43,7 @@ export const BasicLayout: React.FC<IBasicLayoutProps> = ({
       <div className={styles.wrapper + ' centralize'}>
         <div className={styles.title}>
           <h2>{title}</h2>
-          <h3>{subtitle}</h3>
+          {subtitle}
         </div>
         <div className={styles.container}>
           {hasFilterList && filterList && (
