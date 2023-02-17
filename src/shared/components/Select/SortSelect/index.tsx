@@ -1,13 +1,11 @@
-import { useRouterParams } from '@/hooks'
+import { useRandomUsers, useRouterParams } from '@/hooks'
 
 import { BasicSelect } from '../BasicSelect'
 
-interface ISelectProps {
-  options?: { name: string; value: string }[]
-}
-
-export const SortSelect: React.FC<ISelectProps> = ({ options }) => {
+export const SortSelect: React.FC = () => {
   const { setSortParam, getParamValue } = useRouterParams()
+
+  const { sort } = useRandomUsers()
 
   const sortParam = getParamValue('sort')
 
@@ -16,12 +14,10 @@ export const SortSelect: React.FC<ISelectProps> = ({ options }) => {
   }
 
   return (
-    <>
-      <BasicSelect
-        handleSelect={handleSelect}
-        defaultParam={sortParam ?? ''}
-        options={options}
-      />
-    </>
+    <BasicSelect
+      handleSelect={handleSelect}
+      defaultParam={sortParam ?? ''}
+      options={sort}
+    />
   )
 }
