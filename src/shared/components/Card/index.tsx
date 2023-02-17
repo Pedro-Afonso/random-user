@@ -16,7 +16,7 @@ export const Card: React.FC<ICardProps> = ({ randomUser }) => {
   } = randomUser
 
   return (
-    <article className={styles.card}>
+    <article data-testid="card-id" className={styles.card}>
       <section>
         <Image src={medium} alt={first} width={80} height={80} priority />
         <h3>{first + ' ' + last}</h3>
