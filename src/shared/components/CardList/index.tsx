@@ -10,7 +10,6 @@ export const CardList = () => {
 
   return (
     <>
-      (
       <div className={styles.grid}>
         {isLoading && (
           <BarLoader
@@ -23,7 +22,7 @@ export const CardList = () => {
           <Card key={randomUser.login.uuid} randomUser={randomUser} />
         ))}
       </div>
-      ){!isLoading && <Pagination length={total} />}
+      {!isLoading && <Pagination length={total} />}
     </>
   )
 }
