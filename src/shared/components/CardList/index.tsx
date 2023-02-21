@@ -6,12 +6,12 @@ import { useRandomUsers } from '@/hooks'
 import styles from './CardList.module.css'
 
 export const CardList = () => {
-  const { users, total, isLoading } = useRandomUsers()
+  const { users, total, isLoading, isFetching } = useRandomUsers()
 
   return (
     <>
       <div className={styles.grid}>
-        {isLoading && (
+        {(isLoading || isFetching) && (
           <BarLoader
             data-testid="bar-loader-id"
             width="100%"

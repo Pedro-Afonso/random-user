@@ -27,6 +27,7 @@ export const useRandomUsers = () => {
   const total = randomUsersData.data?.total
   const sort = randomUsersData.data?.sort
   const isLoading = randomUsersData.isLoading
+  const isFetching = randomUsersData.isFetching
   const page = router.query.page
   const limit = router.query.limit
 
@@ -38,6 +39,7 @@ export const useRandomUsers = () => {
     filter,
     total,
     sort,
-    isLoading
+    isLoading,
+    isFetching
   }
 }
